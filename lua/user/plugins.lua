@@ -4,7 +4,6 @@ require 'paq' {
   'Mofiqul/vscode.nvim',
   'neovim/nvim-lspconfig',
   -- 'folke/lua-dev.nvim',
-  'kosayoda/nvim-lightbulb',
   'folke/zen-mode.nvim',
   'numToStr/Comment.nvim',
   -- 'jose-elias-alvarez/null-ls.nvim',
@@ -28,8 +27,6 @@ require 'paq' {
 }
 
 require('Comment').setup({})
-
-require('nvim-lightbulb').setup { autocmd = { enabled = true } }
 
 require('zen-mode').setup {
   window = {
