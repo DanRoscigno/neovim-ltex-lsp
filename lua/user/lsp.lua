@@ -45,7 +45,6 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       desc = 'format on save',
       callback = function()
-        -- TODO on 0.8 use
         buffer = bufnr,
         vim.lsp.buf.format({ bufnr = bufnr })
       end,
@@ -198,8 +197,7 @@ null_ls.setup {
         group = init_null_ls_on_attach_group,
         buffer = bufnr,
         callback = function()
-          -- TODO on 0.8 use vim.lsp.buf.format({ bufnr = bufnr }) instead
-          vim.lsp.buf.formatting_sync()
+          vim.lsp.buf.format()
         end,
       })
     end
