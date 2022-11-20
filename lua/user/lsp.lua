@@ -1,4 +1,3 @@
-require'lspconfig'.marksman.setup{}
 
 local init_lsp_on_attach_group = vim.api.nvim_create_augroup('init_lsp_on_attach_group', {})
 vim.diagnostic.config { virtual_text = false, float = { focusable = false, source = "if_many", border = "rounded" } }
@@ -116,6 +115,10 @@ lspconfig.rust_analyzer.setup {
       },
     },
   },
+}
+
+lspconfig.marksman.setup{
+  root_dir = lspconfig.util.root_pattern(".git", ".marksman.toml"),
 }
 
 lspconfig.denols.setup {
