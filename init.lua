@@ -9,6 +9,8 @@ require('user.lsp')
 
 vim.cmd [[colorscheme vscode]]
 
+vim.opt.number = true
+
 vim.opt.title = true -- window title is 'titlestring' or 'filename [+=-] (path)'
 vim.opt.titlelen = 33 -- percentage of 'columns' for the length of window title
 
