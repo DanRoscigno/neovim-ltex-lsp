@@ -1,7 +1,8 @@
 require'lspconfig'.marksman.setup{}
 
 local init_lsp_on_attach_group = vim.api.nvim_create_augroup('init_lsp_on_attach_group', {})
-vim.diagnostic.config { virtual_text = false, float = { focusable = false, source = "if_many" } }
+vim.diagnostic.config { virtual_text = false, float = { focusable = false, source = "if_many", border = "rounded" } }
+-- lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })
 
 -- show the popup diagnostics window once for the current cursor location
 -- this prevents it overwriting other popups triggered after
@@ -204,3 +205,4 @@ null_ls.setup {
     end
   end,
 }
+require("user.handlers").setup()
