@@ -9,7 +9,10 @@ require('user.lsp')
 
 vim.cmd [[colorscheme vscode]]
 
+-- show line numbers
 vim.opt.number = true
+-- do NOT do the relative line number thing
+vim.opt.relativenumber = false
 
 vim.opt.title = true -- window title is 'titlestring' or 'filename [+=-] (path)'
 vim.opt.titlelen = 33 -- percentage of 'columns' for the length of window title
@@ -58,7 +61,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = init_group,
 })
 vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = { '*.md', '*.txt' },
+  pattern = { '*.md', '*.mdx', '*.txt' },
   callback = function()
     vim.opt.wrap = true
   end,
@@ -67,15 +70,6 @@ vim.api.nvim_create_autocmd('BufEnter', {
 
 vim.g.mapleader = ' '
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- vim.keymap.set('n', '<leader>vs', function()
---   for name, _ in pairs(package.loaded) do
---     if name:match('^user') then
---       package.loaded[name] = nil
---     end
---   end
---   dofile(vim.env.MYVIMRC)
--- end)
 
 vim.keymap.set('i', 'jk', '<Esc>')
 vim.keymap.set('t', 'jk', [[<C-\><C-n>]])
@@ -90,6 +84,13 @@ vim.keymap.set('n', '<leader>b', '<Cmd>Buffers!<CR>')
 vim.keymap.set('n', '<leader>h', '<Cmd>History!<CR>')
 vim.keymap.set('n', '<leader>/', '<Cmd>Rg!<CR>')
 
+-- Work with diagnostics from marksman, languageserver, grammarly and other LSPs
+-- leader-e pops a float with all of the diagnostics for the current line. h,j,k,l
+-- will cancel the float
+--
+-- [d and ]d navigate to the errors
+--
+-- leader-l gives a list of all diagnostics for the buffer
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
