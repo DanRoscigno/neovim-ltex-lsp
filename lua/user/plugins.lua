@@ -1,4 +1,5 @@
 require 'paq' {
+  'nathom/filetype.nvim',
   'savq/paq-nvim',
   'davidgranstrom/nvim-markdown-preview',
   'Mofiqul/vscode.nvim',
@@ -26,6 +27,15 @@ require 'paq' {
     end,
   },
 }
+
+-- Set the filetype of *.mdx files to markdown
+require("filetype").setup({
+    overrides = {
+        extensions = {
+            mdx = "markdown",
+        },
+   },
+})
 
 require('Comment').setup({})
 
